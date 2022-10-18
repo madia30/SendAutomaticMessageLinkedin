@@ -1,0 +1,14 @@
+
+            $sql = "SELECT prenom,nom,send_date FROM message_send where prenom='".$prenom."' and nom='".$nom."';";
+            $result = $connect->query($sql);
+            $output = array('data' => array());
+            if($result->num_rows > 0) {  
+                while($row = $result->fetch_array()) { 
+
+                    $prenom=$row['prenom'];
+                    $nom=$row['nom'];
+
+                    $sql1 = "INSERT INTO message_open (prenom,nom,open_date)  VALUES ('$prenom','$nom','$date')";
+                    if($connect->query($sql1) === TRUE) {}
+                }
+            }
